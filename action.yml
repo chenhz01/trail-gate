@@ -1,0 +1,15 @@
+name: trail-gate
+description: Hash-chained agent audit trail — and it verifies its own chain.
+branding:
+  icon: shield
+  color: blue
+inputs:
+  args:
+    description: Arguments passed to gate.py
+    required: false
+    default: "--help"
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: python "${{ github.action_path }}/gate.py" ${{ inputs.args }}
