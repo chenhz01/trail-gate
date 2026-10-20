@@ -49,7 +49,7 @@ Being explicit here is cheaper than a wrong expectation later.
 
 ## Exit codes
 
-`0` = chain intact; `1` = tamper, gap, reorder, bad type, or broken rollback.
+`0` = chain intact. `1` = tamper, gap, reorder, bad type, or broken rollback. `2` = bad input. **The bundled example is a valid chain — it exits 0 on purpose.**
 
 ## Install
 
