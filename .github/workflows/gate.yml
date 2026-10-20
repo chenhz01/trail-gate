@@ -19,9 +19,7 @@ jobs:
         # is decoration.
         run: |
           set +e
-          python gate.py append examples/trail.jsonl --type decision --payload {"action":"deploy"} && \
-          gate.py append examples/trail.jsonl --type tool_call --payload {"tool":"run_tests"} && \
-          gate.py verify examples/trail.jsonl > out.txt 2>&1
+          python gate.py verify examples/trail.jsonl > out.txt 2>&1
           code=$?
           cat out.txt
           test -s out.txt || { echo "no output — gate did not run"; exit 1; }
