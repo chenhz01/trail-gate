@@ -19,9 +19,7 @@
 One command, on a file you already have:
 
 ```bash
-python gate.py append examples/trail.jsonl --type decision --payload {"action":"deploy"} && \
-  python gate.py append examples/trail.jsonl --type tool_call --payload {"tool":"run_tests"} && \
-  python gate.py verify examples/trail.jsonl
+python gate.py verify examples/trail.jsonl
 ```
 
 <details>
@@ -32,6 +30,20 @@ valid: True | events: 2 | errors: 0
 ```
 
 </details>
+
+## Try it on your own input (optional)
+
+The one-liner above reads the bundled `examples/` as shipped, so it works on a fresh
+clone. To watch the gate act on something you wrote yourself, drive a scratch copy —
+`cp` resets it at the start of every run, so the result is the same each time and the
+bundled sample is never modified:
+
+```bash
+cp examples/trail.jsonl demo-trail.jsonl
+python gate.py append demo-trail.jsonl --type decision --payload {"action":"deploy"}
+python gate.py append demo-trail.jsonl --type tool_call --payload {"tool":"run_tests"}
+python gate.py verify demo-trail.jsonl
+```
 
 ## What it does
 
@@ -114,7 +126,7 @@ mistaken for "it inspected my files".
 
 本页承诺的是 **15 项可机器复核的结构特征**，当前 **15/15**（2026-10-20 复核）。
 GitHub 从未公开 Trending 的排序算法，所以任何「保证上热门」的说法都在描述一件它不可能知道的事；
-本仓不这么说。跑 `python hotness.py` 可自行复算每一条。
+本仓不这么说。跑 `python tools/hotness.py` 可自行复算每一条。
 
 ## Start here (if you install only one)
 
@@ -148,7 +160,7 @@ Plain version: instead of asking you to trust a badge, I list what I actually ch
 name the script that checks it, and let you re-run it. If one of these lines is false,
 that is a bug in my repo, not a matter of taste.
 
-- Falsifiable side: `python hotness.py` re-runs every check and prints the evidence line
+- Falsifiable side: `python tools/hotness.py` re-runs every check and prints the evidence line
   for each one. You do not have to trust this paragraph.
 - Non-falsifiable side: GitHub has never published how Trending sorts repositories, so
   any repo promising you a guaranteed spot is telling you something it cannot know.
