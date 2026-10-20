@@ -1,5 +1,5 @@
 name: trail-gate
-description: Hash-chained agent audit trail — and it verifies its own chain.
+description: Agent audit trail: hash-chained, tamper-evident log of agent decisions and tool calls that verifies its own chain.
 branding:
   icon: shield
   color: blue
